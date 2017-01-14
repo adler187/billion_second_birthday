@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Billion Second Birthday</title>
+  <link rel="stylesheet" href="assets/jquery-ui.min.css">
+  <link rel="stylesheet" href="assets/jquery-ui.theme.min.css">
+  <script src="assets/jquery.min.js"></script>
+  <script src="assets/jquery-ui.min.js"></script>
+  <script src="assets/moment.js"></script>
+  <script>
+  $( function() {
+    $( "#birthdate" ).birthdate({
+      changeMonth: true,
+      changeYear: true
+    });
+    
+    $( "#calculate" ).click(function(){
+        var birthday = $( "#birthdate" ).val();
+        
+        var d = moment(birthday);
+        d.add(1000000000, 'seconds');
+        $( "#date" ).html(d)
+    });
+  }
+  );
+  </script>
+</head>
+<body>
+
+<h1>When do you turn 1 Billion? (seconds)</h1>
+<p>Birthday: <input type="text" id="birthdate"></p>
+<input type="button" id="calculate" value="Calculate">
+<div id="date"></div>
+</body>
+</html>
