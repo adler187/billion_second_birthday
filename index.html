@@ -1,81 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Billion Second Birthday</title>
-  <link rel="stylesheet" href="assets/jquery-ui.min.css">
-  <link rel="stylesheet" href="assets/jquery-ui.theme.min.css">
-  <script src="assets/jquery.min.js"></script>
-  <script src="assets/jquery-ui.min.js"></script>
-  <script src="assets/moment.js"></script>
-  <script>
-  $( function() {
-    $( "#birthdate" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: 'yy-mm-dd'
-    });
-    
-    $( "#calculate" ).click(function(){
-      var birthday = $( "#birthdate" ).val();
-      if(birthday) {
-        var format = $( "#format" ).val().replace('yy', 'yyyy').toUpperCase();
-        
-        var d = moment(birthday, format).add(1000000000, 'seconds');
-        var msg = '';
-        if(moment() < d) {
-          msg = "You'll be 1 Billion seconds old on " + d.format(format);
-        } else {
-          msg = "You turned 1 Billion seconds old on " + d.format(format) + "!";
-          d.add(1000000000, 'seconds');
-          msg = msg + "You're next chance is " + d.format(format);
-        }
-        $( "#date" ).html(msg);
-      }
-    });
-    
-    $( "#format" ).on( "change", function() {
-      $( "#birthdate" ).datepicker( "option", "dateFormat", $( this ).val() );
-      
-      if($( "#date" ).html()) {
-        $( "#calculate" ).click();
-      }
-    });
-  }
-  );
-  </script>
-  <style>
-  .
-  #birthdate {
-    width: 12ex;
-    text-align: center;
-  }
-  
-  #content {
-    margin: auto;
-    width: 600px;
-  }
-  </style>
-</head>
-<body>
-
-<div id='wrapper'>
-<div id='content'>
-<h1>When do you turn 1 Billion? (seconds)</h1>
-<p>
-Birthday:
-<input type="text" id="birthdate">
-<select id="format">
-  <option value="yy-mm-dd">YYYY-MM-DD</option>
-  <option value="mm/dd/yy">MM/DD/YYYY</option>
-  <option value="dd/mm/yy">DD/MM/YYYY</option>
-</select>
-<input type="button" id="calculate" value="Calculate">
-</p>
-<p></p>
-<h2 id="date"></h2>
-</div>
-</div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Billion Second Birthday</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
