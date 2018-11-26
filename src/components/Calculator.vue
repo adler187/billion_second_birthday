@@ -1,11 +1,7 @@
 <template>
-  <v-layout row>
-    <v-flex xs6 offset-xs3>
+  <v-layout column>
+    <v-flex xs6>
       <div class="white elevation-2">
-        <v-toolbar flat dense class="blue" dark>
-          <v-toolbar-title>When do you turn 1 billion seconds old?</v-toolbar-title>
-        </v-toolbar>
-        <h1>When do you turn 1 billion seconds old?</h1>
         <h2>{{message}}</h2>
         <v-menu
           :close-on-content-click="false"
