@@ -68,7 +68,7 @@ import moment from 'moment'
 export default {
   data: () => ({
     interval_id: null,
-    // now: moment(),
+    now: moment(),
     birthdate: new Date().toISOString().substr(0, 10),
     birthtime: '00:00',
     format: 'YYYY-MM-DD',
@@ -87,21 +87,29 @@ export default {
       return moment(this.birthdate + ' ' + this.birthtime).add(1000000000, 's')
     },
     seconds_until_billion () {
-      console.log('seconds')
       return this.billion_seconds.diff(this.now, 's')
     },
     message () {
-      if (this.billion_seconds.isValid()) {
-        let formatted = this.billion_seconds.format(this.format)
-        if (this.seconds_until_billion > 0) {
-          return `You will turn 1 billion seconds old on ${formatted} in ${this.seconds_until_billion} seconds.`
-        } else {
-          return `You turned 1 billion seconds old on ${formatted}`
-        }
-      } else {
+      if (!this.billion_seconds.isValid()) {
         return ''
       }
+
+      let formatted = this.billion_seconds.format(this.format)
+      if (this.seconds_until_billion > 0) {
+        return `You will turn 1 billion seconds old on ${formatted} in ${this.seconds_until_billion} seconds.`
+      } else {
+        return `You turned 1 billion seconds old on ${formatted}`
+      }
     }
+  },
+  mounted: function () {
+    if (this.interval_id) {
+      clearInterval(this.interval_id)
+    }
+
+    this.interval_id = setInterval(() => {
+      this.now = moment()
+    }, 1000)
   }
 }
 </script>
