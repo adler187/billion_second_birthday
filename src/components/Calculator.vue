@@ -47,13 +47,28 @@
             @change="$refs.menu.save(birthtime)">
           </v-time-picker>
         </v-menu>
-        <!-- <v-flex xs12 sm6 md3>
-          <v-select
-            :items="formats"
-            v-model="format"
-            label="Date Format">
-          </v-select>
-        </v-flex> -->
+      </div>
+    </v-flex>
+    <v-flex xs6>
+      <div class="white elevation-2">
+        <v-expansion-panel
+          v-model="panel"
+          expand>
+          <v-expansion-panel-content>
+            <div slot="header">Advanced Options</div>
+            <v-card>
+              <v-card-text class="grey lighten-4">
+                <v-flex >
+                  <v-select
+                    :items="formats"
+                    v-model="format"
+                    label="Date Format">
+                  </v-select>
+                </v-flex>
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
       </div>
     </v-flex>
   </v-layout>
